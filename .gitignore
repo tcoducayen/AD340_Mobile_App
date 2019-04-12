@@ -128,6 +128,14 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
+#Other files unsure to add
+.idea/
+build.gradle
+gradle.properties
+gradlew
+gradlew.bat
+settings.gradle
+
 ### AndroidStudio Patch ###
 
 !/gradle/wrapper/gradle-wrapper.jar
