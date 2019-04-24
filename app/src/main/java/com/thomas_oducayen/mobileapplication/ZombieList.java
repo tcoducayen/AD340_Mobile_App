@@ -60,13 +60,4 @@ public class ZombieList extends AppCompatActivity {
         androidListView.setAdapter(simpleAdapter);
     }
 
-    public String[] getTitles() {
-        String[] zombieTitles = new String[zombies.length];
-
-        for(int i = 0;i < zombies.length;i++) {
-            zombieTitles[i] = zombies[i][0];
-        }
-        return zombieTitles;
-    }
-
 }
