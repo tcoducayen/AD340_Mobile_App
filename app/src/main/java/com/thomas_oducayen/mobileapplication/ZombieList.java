@@ -44,7 +44,7 @@ public class ZombieList extends AppCompatActivity {
 
         List<HashMap<String, String>> aList = new ArrayList<HashMap<String, String>>();
 
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < zombies.length; i++) {
             HashMap<String, String> hm = new HashMap<String, String>();
             hm.put("lvTitle", zombies[i][0]);
             hm.put("lvYear", zombies[i][1]);
