@@ -56,7 +56,7 @@ public class ZombieList extends AppCompatActivity {
         int[] to = { R.id.listview_image, R.id.listview_title, R.id.listview_year};
 
         SimpleAdapter simpleAdapter = new SimpleAdapter(getBaseContext(), aList, R.layout.zombie_list_view, from, to);
-        androidListView.setAdapter(simpleAdapter);
+        listView.setAdapter(simpleAdapter);
     }
 
 }
