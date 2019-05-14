@@ -4,7 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ZombieList" >
+    tools:context=".ZombieList">
+
+    <include layout="@layout/toolbar_layout"/>
 
     <ListView
         android:id="@+id/mobile_list"

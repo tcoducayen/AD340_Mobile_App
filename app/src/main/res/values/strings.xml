@@ -6,4 +6,5 @@
         Japanese culture</string>
     <string name="edit_messages">Enter a message</string>
     <string name="button_send">Send</string>
+    <string name="overflow">Overflow</string>
 </resources>
