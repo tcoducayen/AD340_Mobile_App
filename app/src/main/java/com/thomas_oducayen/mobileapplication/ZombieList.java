@@ -1,7 +1,15 @@
 package com.thomas_oducayen.mobileapplication;
 
+import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.view.menu.MenuBuilder;
+import android.support.v7.view.menu.MenuView;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -9,6 +17,7 @@ import android.widget.SimpleAdapter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
 
 public class ZombieList extends AppCompatActivity {
     ListView listView;
@@ -36,11 +45,18 @@ public class ZombieList extends AppCompatActivity {
             {"Dawn of the Dead","1978","George Romero","http://collider.com/wp-content/uploads/2015/08/dawn-of-the-dead-romero.jpg","George Romero didn’t invent the zombie, but he did single-handedly create the template for the modern zombie movie as we know it with his exquisite Night of the Living Dead. For his sequel, Romero dodged the temptation to retread familiar territory (a quality he would maintain for each of his subsequent “dead” films), ditching the intimate confines of a home for the sprawling reaches of a shopping mall, and trading his black-and-white bleakness for a playful color-saturated palette.\nDawn of the Dead is a horror sequel in every sense, bigger and bloodier, but it maintain’s Romero’s commitment to piercing social commentary, this time tackling the insatiable lust of American consumerism. It’s also packed to the brim with Romero’s skilled eye for visceral violence rendered with first-rate old-school gore effects from Tom Savini, the legendary craftsman of carnage who transplanted his experience as a combat photographer in Vietnam to a career spent creating on-screen nightmares. As in all of Romero’s great work, that beautifully executed bloodshed is only a backdrop for a compelling character drama as the group of strangers seeking refuge in the abandoned shopping complex cope with increasing interpersonal conflict. Romero directs it all with wit and empathy, and an expert eye for when to drop the next big scare. — Haleigh Foutch"}
     };
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_zombie_list);
         listView = findViewById(R.id.mobile_list);
+        Toolbar myToolbar = findViewById(R.id.toolbar);
+
+        setSupportActionBar(myToolbar);
+        ActionBar ab = getSupportActionBar();
+        ab.setDisplayHomeAsUpEnabled(true);
+        ab.setTitle("Zombie Movies");
 
         List<HashMap<String, String>> aList = new ArrayList<HashMap<String, String>>();
 
@@ -58,5 +74,13 @@ public class ZombieList extends AppCompatActivity {
         SimpleAdapter simpleAdapter = new SimpleAdapter(getBaseContext(), aList, R.layout.zombie_list_view, from, to);
         listView.setAdapter(simpleAdapter);
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.about_action, menu);
+        return true;
+    }
+
 
 }
