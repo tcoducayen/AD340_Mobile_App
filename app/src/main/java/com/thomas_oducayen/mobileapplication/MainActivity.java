@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startZombies();
                 break;
             case R.id.trButton:
-                startCamera();
+                displayToast("Top right");
                 break;
             case R.id.blButton:
                 displayToast("Bottom left");
@@ -64,11 +64,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void startZombies() {
         Intent intent = new Intent(this, ZombieList.class);
-        startActivity(intent);
-    }
-
-    public void startCamera() {
-        Intent intent = new Intent(this, CameraList.class);
         startActivity(intent);
     }
 
