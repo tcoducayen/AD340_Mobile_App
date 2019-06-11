@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.thomas_oducayen.mobileapplication">
 
+    <!--<uses-permission android:name="android.permission.INTERNET">-->
+    <!--<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE">-->
+    <!--<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION">-->
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,7 +13,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ZombieList"
+        <activity
+            android:name=".ZombieList"
+            android:parentActivityName=".MainActivity"
+            android:label="Zombies">
+
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+
+        <activity
+            android:name=".TrafficCamActivity"
+            android:parentActivityName=".MainActivity"
+            android:label="@string/title_activity_traffic_cam" />
+
+        <activity
+            android:name=".About"
             android:parentActivityName=".MainActivity">
 
             <!-- The meta-data tag is required if you support API level 15 and lower -->
@@ -17,19 +38,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".About"
-            android:parentActivityName=".MainActivity">
 
-            <!-- The meta-data tag is required if you support API level 15 and lower -->
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
-        </activity>
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action
+                    android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category
+                    android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
