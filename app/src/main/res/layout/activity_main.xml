@@ -108,8 +108,8 @@
         android:layout_height="75dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:onClick="displayToast"
-        android:text="Bottom Left"
+        android:onClick="startMap"
+        android:text="Map"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tlButton" />
 

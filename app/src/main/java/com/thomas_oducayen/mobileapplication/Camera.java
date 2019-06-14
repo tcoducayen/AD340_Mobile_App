@@ -12,4 +12,9 @@ public class Camera {
         this.owner = owner;
         this.coords= coords;
     }
+
+    public String getImage() {return image;}
+    public String getLabel() {return label;}
+    public String getOwner() {return owner;}
+    public double[] getCoords() {return coords;}
 }

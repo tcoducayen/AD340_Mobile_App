@@ -1,6 +1,5 @@
 package com.thomas_oducayen.mobileapplication;
 
-import android.app.DownloadManager;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -20,7 +19,6 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
 import com.squareup.picasso.Picasso;
@@ -30,7 +28,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class TrafficCamActivity extends AppCompatActivity {
     // Whether there is a Wi-Fi connection.
@@ -53,11 +50,13 @@ public class TrafficCamActivity extends AppCompatActivity {
         cameraList.setAdapter(listAdapter);
 
         checkNetworkConnection();
+
         if (wifiConnected || mobileConnected){
             loadCameraData(dataUrl);
         }
     }
 
+    //class that is for cameras only
     public class CameraListAdapter extends ArrayAdapter<Camera> {
         private final Context context;
         private ArrayList<Camera> values;
@@ -68,6 +67,7 @@ public class TrafficCamActivity extends AppCompatActivity {
             this.values = values;
         }
 
+        // sets the view of camera_list_activity
         public View getView(int position, View convertView, ViewGroup parent) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View rowView = inflater.inflate(R.layout.camera_list_item, parent, false);
@@ -113,13 +113,11 @@ public class TrafficCamActivity extends AppCompatActivity {
                     }
                 });
         queue.add(jsonReq);
-
     }
 
     private void checkNetworkConnection() {
         // BEGIN_INCLUDE(connect)
-        ConnectivityManager connMgr =
-                (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeInfo = connMgr.getActiveNetworkInfo();
         if (activeInfo != null && activeInfo.isConnected()) {
             wifiConnected = activeInfo.getType() == ConnectivityManager.TYPE_WIFI;
