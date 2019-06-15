@@ -9,6 +9,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.content.Intent;
 
@@ -19,10 +21,17 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 
+import java.lang.reflect.Field;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG = "MainActivity";
     private FirebaseAuth mAuth;
+
+    Button send = (Button)findViewById(R.id.send_button);
+    EditText send_name = (EditText)findViewById(R.id.name);
+    EditText send_email = (EditText)findViewById(R.id.email);
+    EditText send_password = (EditText)findViewById(R.id.password);
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -32,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setSupportActionBar(myToolbar);
 
         // Initialize Firebase Auth
-//        mAuth = FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();
 
         Button tl = findViewById(R.id.tlButton);
         tl.setOnClickListener(this);
@@ -43,14 +52,50 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button br = findViewById(R.id.brButton);
         br.setOnClickListener(this);
 
-//        Button send = findViewById(R.id.send_button);
-//        send.setOnClickListener(this);
+        send.setOnClickListener(this);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.about_action, menu);
+        return true;
+    }
+
+
+    private boolean validate() {
+
+        String username = send_name.getText().toString();
+        String password = send_password.getText().toString();
+
+        final EditText emailValidate = findViewById(R.id.email);
+
+        final TextView textView = findViewById(R.id.textView);
+
+        String email = emailValidate.getText().toString().trim();
+
+        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+
+
+        if (email.matches(emailPattern)) {
+            Toast.makeText(getApplicationContext(), "valid email address", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getApplicationContext(), "Invalid email address", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+
+        if (username.isEmpty()) {
+            Toast.makeText(getApplicationContext(),
+                    "Please Enter User", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (password.isEmpty()) {
+            Toast.makeText(getApplicationContext(),
+                    "Please Enter Password", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
         return true;
     }
 
@@ -147,4 +192,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 return super.onOptionsItemSelected(item);
         }
     }
+
 }

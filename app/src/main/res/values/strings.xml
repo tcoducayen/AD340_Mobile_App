@@ -4,8 +4,9 @@
     <string name="personal_description">Currently a student of Application Development
         planning a career in Computer Science \n\nLoves drawing, singing, games, and
         Japanese culture</string>
-    <string name="edit_messages">Enter a message</string>
-    <string name="button_send">Send</string>
+    <string name="edit_messages">Username</string>
+    <string name="password">Password</string>
+    <string name="button_send">Login</string>
     <string name="overflow">Overflow</string>
     <string name="title_activity_traffic_cam">Traffic Cameras</string>
     <string name="title_activity_maps">Map</string>
