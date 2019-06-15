@@ -9,4 +9,5 @@
     <string name="overflow">Overflow</string>
     <string name="title_activity_traffic_cam">Traffic Cameras</string>
     <string name="title_activity_maps">Map</string>
+    <string name="title_activity_maps2">Map</string>
 </resources>

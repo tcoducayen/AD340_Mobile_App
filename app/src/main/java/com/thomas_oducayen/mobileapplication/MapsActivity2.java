@@ -1,21 +1,12 @@
 package com.thomas_oducayen.mobileapplication;
 
 import android.Manifest;
-import android.content.Context;
-import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.location.Address;
-import android.location.Geocoder;
 import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.ListView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -41,13 +32,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallback {
 
     private static final int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 9;
     private GoogleMap mMap;
@@ -68,19 +58,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_map);
+        setContentView(R.layout.activity_maps2);
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
+
         mapFragment.getMapAsync(this);
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
-//        createLocationCallback();
-//        loadCameraData();
-//        getLocation();
-//        getLocationPermission();
-//        getDeviceLocation();
-
+        createLocationCallback();
+        loadCameraData();
+        getLocation();
+        getLocationPermission();
+        getDeviceLocation();
     }
 
     public void getDeviceLocation() {
@@ -118,6 +109,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
     }
 
+
     private void getLocationPermission() {
 
         if (ActivityCompat.checkSelfPermission(this.getApplicationContext(), ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
@@ -127,6 +119,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             ActivityCompat.requestPermissions(this, permission, LOCATION_REQUEST_CODE);
         }
     }
+
 
     private void createLocationCallback() {
         mLocationCallback = new LocationCallback() {
@@ -245,27 +238,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         queue.add(jsonReq);
     }
 
-    public boolean checkNetworkConnections() {
-        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-
-        if (networkInfo != null && networkInfo.isConnected()) {
-            WIFIconnected = networkInfo.getType() == connectivityManager.TYPE_WIFI;
-            mobileConnected = networkInfo.getType() == connectivityManager.TYPE_MOBILE;
-            if (WIFIconnected) {
-                Log.i("WIFI connected", "successfully");
-                return true;
-            } else if (mobileConnected) {
-                Log.i("Mobile connected ", "successfuly");
-                return true;
-            }
-        } else {
-            Log.i("Connection status ", "No connection");
-            return false;
-        }
-        return false;
-    }
-
     public void showCameraMarkers() {
 
         Log.i("CAMERA", cameraData.toString());
@@ -291,12 +263,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        Log.d("Location", "On MapReady");
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-
+//        LatLng sydney = new LatLng(-34, 151);
+//        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+//        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
 }

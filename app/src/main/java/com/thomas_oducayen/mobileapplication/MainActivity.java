@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setSupportActionBar(myToolbar);
 
         // Initialize Firebase Auth
-        mAuth = FirebaseAuth.getInstance();
+//        mAuth = FirebaseAuth.getInstance();
 
         Button tl = findViewById(R.id.tlButton);
         tl.setOnClickListener(this);
@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void startMap() {
-        Intent intent = new Intent(this, MapsActivity.class);
+        Intent intent = new Intent(this, MapsActivity2.class);
         startActivity(intent);
     }
 
